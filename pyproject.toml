@@ -1,5 +1,5 @@
 [project]
-name = "codebase-context-analyzer"
+name = "code-context-analyzer"
 version = "0.1.0"
 description = "A tool to analyze codebase structure and summarize content to use with AI easily."
 readme = "README.md"
