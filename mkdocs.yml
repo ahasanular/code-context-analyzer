@@ -1,0 +1,85 @@
+site_name: Code Context Analyzer
+site_description: CLI tool to analyze codebase structure and context
+site_author: Md. Ahasanul Arafath
+site_url: https://ahasanular.github.io/code-context-analyzer/
+
+# Repository
+repo_name: ahasanular/code-context-analyzer
+repo_url: https://github.com/ahasanular/code-context-analyzer
+edit_uri: edit/main/docs/
+
+# Theme configuration
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+
+# Site navigation
+nav:
+  - Home: index.md
+  - Usage Guide: usage.md
+  - Architecture:
+      - Overview: architecture.md
+      - Modules: modules.md
+  - Contributing: contributing.md
+  - Changelog: changelog.md
+  - License: license.md
+
+# Markdown extensions
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - footnotes
+  - attr_list
+  - def_list
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+
+# Plugins
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_root_heading: true
+            show_source: true
+            docstring_style: google
+
+# Watch for changes in source code to enable live-reloading
+watch:
+  - analyzer
+  - main.py
+
+# Extra CSS/JS (optional customization)
+# extra_css:
+#   - css/custom.css
+# extra_javascript:
+#   - js/custom.js
+
+# Deployment (GitHub Pages)
+# Run `mkdocs gh-deploy` to publish
