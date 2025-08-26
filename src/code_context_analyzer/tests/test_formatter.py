@@ -1,4 +1,4 @@
-from analyzer.formatter import Formatter
+from code_context_analyzer.analyzer.formatter import Formatter
 
 
 def test_formatter_basic():

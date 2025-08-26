@@ -1,4 +1,4 @@
-from main import app
+from code_context_analyzer.main import app
 
 
 def test_cli_runs(monkeypatch):

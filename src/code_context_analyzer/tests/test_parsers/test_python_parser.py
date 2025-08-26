@@ -1,4 +1,4 @@
-from analyzer.parsers.python_parser import PythonParser
+from code_context_analyzer.analyzer.parsers.python_parser import PythonParser
 
 
 def test_python_parser_basic(tmp_path):

@@ -1,4 +1,4 @@
-from analyzer.parsers.js_parser import JSParser
+from code_context_analyzer.analyzer.parsers.js_parser import JSParser
 
 
 def test_js_parser_basic(tmp_path):

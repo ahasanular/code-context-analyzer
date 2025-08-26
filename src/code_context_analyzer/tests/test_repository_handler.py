@@ -1,6 +1,6 @@
 import os
 
-from analyzer.repository_handler import RepositoryHandler
+from code_context_analyzer.analyzer.repository_handler import RepositoryHandler
 
 
 def test_local_path_resolution(tmp_path):

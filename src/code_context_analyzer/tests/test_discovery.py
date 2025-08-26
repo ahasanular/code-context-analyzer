@@ -1,4 +1,4 @@
-from analyzer.discovery import discover_files
+from code_context_analyzer.analyzer.discovery import discover_files
 
 
 def test_discover_files(tmp_path):

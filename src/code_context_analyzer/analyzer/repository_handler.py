@@ -6,7 +6,8 @@ import subprocess
 import tempfile
 from urllib.parse import urlparse
 
-from analyzer.utils.temp_dir import temp_directory
+from .utils.temp_dir import temp_directory
+
 
 
 class RepositoryHandler:

@@ -2,8 +2,8 @@
 import argparse
 import sys
 
-from analyzer import run_analysis
-from analyzer.repository_handler import RepositoryHandler
+from code_context_analyzer.analyzer import run_analysis
+from code_context_analyzer.analyzer.repository_handler import RepositoryHandler
 
 
 def app(argv=None):
@@ -25,7 +25,7 @@ def app(argv=None):
 
     if not args.no_clipboard:
         try:
-            from analyzer.clipboard import copy_to_clipboard
+            from code_context_analyzer.analyzer.clipboard import copy_to_clipboard
             copy_to_clipboard(result)
             print("[info] Copied summary to clipboard")
         except Exception as e:
