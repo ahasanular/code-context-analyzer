@@ -3,7 +3,7 @@ import argparse
 import sys
 
 from code_context_analyzer.analyzer import run_analysis
-from code_context_analyzer.analyzer.repository_handler import RepositoryHandler
+from code_context_analyzer.repo_system import RepositorySession
 
 
 def app(argv=None):
@@ -17,19 +17,23 @@ def app(argv=None):
     parser.add_argument("--no-clipboard", action="store_true", help="Do not copy to clipboard")
     args = parser.parse_args(argv)
 
-    repository_handler = RepositoryHandler()
-    local_path = repository_handler.resolve_source(args.source, args.branch)
-    result = run_analysis(path=local_path, languages=args.languages.split(","), max_files=args.max_files, depth=args.depth, ignore_tests=args.ignore_tests)
+    with RepositorySession(args.source, args.branch) as session:
+        results = run_analysis(
+            session.path,
+            languages=args.languages.split(","),
+            max_files=args.max_files,
+            depth=args.depth,
+            ignore_tests=args.ignore_tests
+        )
+        print(results)
 
-    print(result)
-
-    if not args.no_clipboard:
-        try:
-            from code_context_analyzer.analyzer.clipboard import copy_to_clipboard
-            copy_to_clipboard(result)
-            print("[info] Copied summary to clipboard")
-        except Exception as e:
-            print(f"[warn] Clipboard copy failed: {e}")
+        if not args.no_clipboard:
+            try:
+                from code_context_analyzer.analyzer.clipboard import copy_to_clipboard
+                copy_to_clipboard(results)
+                print("[info] Copied summary to clipboard")
+            except Exception as e:
+                print(f"[warn] Clipboard copy failed: {e}")
 
 
 if __name__ == '__main__':
