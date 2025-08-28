@@ -2,7 +2,7 @@
 import argparse
 import sys
 
-from code_context_analyzer.analyzer import run_analysis
+from code_context_analyzer.analyzer import Analyzer
 from code_context_analyzer.repo_system import RepositorySession
 
 
@@ -18,13 +18,15 @@ def app(argv=None):
     args = parser.parse_args(argv)
 
     with RepositorySession(args.source, args.branch) as session:
-        results = run_analysis(
+        analyzer = Analyzer(
             session.path,
             languages=args.languages.split(","),
             max_files=args.max_files,
             depth=args.depth,
             ignore_tests=args.ignore_tests
         )
+        results = analyzer.run_analysis()
+
         print(results)
 
         if not args.no_clipboard:
