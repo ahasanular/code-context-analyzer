@@ -477,9 +477,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-structure" class="md-nav__link">
+  <a href="#architecture-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      📁 Project Structure
+      🧩 Architecture Overview
     </span>
   </a>
   
@@ -777,9 +777,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-structure" class="md-nav__link">
+  <a href="#architecture-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      📁 Project Structure
+      🧩 Architecture Overview
     </span>
   </a>
   
@@ -844,10 +844,10 @@
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>code-context-analyzer
 </code></pre></div>
 <h2 id="analyze-a-local-project">📁 Analyze a local project<a class="headerlink" href="#analyze-a-local-project" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>cca<span class="w"> </span>./my_project<span class="w"> </span>--lang<span class="w"> </span>python<span class="w"> </span>--depth<span class="w"> </span><span class="m">2</span>
+<div class="highlight"><pre><span></span><code>cca<span class="w"> </span>/path/to/project
 </code></pre></div>
 <h2 id="analyze-a-github-repository">🌐 Analyze a GitHub repository<a class="headerlink" href="#analyze-a-github-repository" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>cca<span class="w"> </span>https://github.com/pallets/flask<span class="w"> </span>--lang<span class="w"> </span>python<span class="w"> </span>--depth<span class="w"> </span><span class="m">2</span>
+<div class="highlight"><pre><span></span><code>cca<span class="w"> </span>https://github.com/pallets/flask<span class="w"> </span>--ignore/alembic/
 </code></pre></div>
 <h2 id="features">⚙️ Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
 <ul>
@@ -861,19 +861,41 @@
 <li>🔌 Modular architecture for future language extensions</li>
 <li>🌐 Supports both local paths and GitHub URLs</li>
 </ul>
-<h2 id="project-structure">📁 Project Structure<a class="headerlink" href="#project-structure" title="Permanent link">&para;</a></h2>
+<h2 id="architecture-overview">🧩 Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>code_context_analyzer/
-├──<span class="w"> </span>cli/
-│<span class="w">   </span>├──<span class="w"> </span>__init__.py<span class="w">            </span><span class="c1"># CLI app codes</span>
-├──<span class="w"> </span>analyzer/
-│<span class="w">   </span>├──<span class="w"> </span>discovery.py<span class="w">          </span><span class="c1"># File discovery logic</span>
-│<span class="w">   </span>├──<span class="w"> </span>formatter.py<span class="w">          </span><span class="c1"># Output formatter</span>
-│<span class="w">   </span>├──<span class="w"> </span>repository_handler.py<span class="w"> </span><span class="c1"># GitHub/local repo handling</span>
-│<span class="w">   </span>├──<span class="w"> </span>clipboard.py<span class="w">          </span><span class="c1"># Clipboard support</span>
-│<span class="w">   </span>├──<span class="w"> </span>parsers/<span class="w">              </span><span class="c1"># Code parsers (Python, JS)</span>
-│<span class="w">   </span>└──<span class="w"> </span>utils/<span class="w">                </span><span class="c1"># Temporary directory helpers</span>
-└──<span class="w"> </span>tests/<span class="w">                    </span><span class="c1"># Test suite</span>
-└──<span class="w"> </span>main.py<span class="w">                   </span><span class="c1"># Entrypoint</span>
+├── /
+│   ├── main.py
+│   └── __init__.py
+├── analyzer/
+│   ├── clipboard.py
+│   ├── discovery.py
+│   └── __init__.py
+├── analyzer\parsers/
+│   ├── base.py
+│   ├── js_parser.py
+│   ├── python_parser.py
+│   └── __init__.py
+├── cli/
+│   └── __init__.py
+├── dto/
+│   ├── models.py
+│   └── __init__.py
+├── formatters/
+│   ├── base.py
+│   ├── default.py
+│   ├── factory.py
+│   ├── html_formatter.py
+│   ├── json_formatter.py
+│   ├── yaml_formatter.py
+│   └── __init__.py
+├── repo_system/
+│   ├── handler.py
+│   ├── session.py
+│   └── __init__.py
+└── utils/
+    ├── dto_converter.py
+    ├── temp_dir.py
+    └── __init__.py
 </code></pre></div>
 <h2 id="documentation-sections">📚 Documentation Sections<a class="headerlink" href="#documentation-sections" title="Permanent link">&para;</a></h2>
 <ul>

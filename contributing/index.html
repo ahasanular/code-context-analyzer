@@ -831,18 +831,15 @@
 <hr />
 <h2 id="prerequisites">🧰 Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Python 3.8+</li>
+<li>Python 3.10+</li>
 <li><code>pip</code> or <code>poetry</code></li>
 <li>Git</li>
 </ul>
 <hr />
 <h2 id="setting-up-locally">📦 Setting Up Locally<a class="headerlink" href="#setting-up-locally" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yourusername/code-context-analyzer.git
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ahasanular/code-context-analyzer.git
 <span class="nb">cd</span><span class="w"> </span>code-context-analyzer
 pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</code></pre></div>
-<p>For development:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
 </code></pre></div>
 <blockquote>
 <p>You can also use <code>poetry install</code> if you're using Poetry.</p>
@@ -853,18 +850,18 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <div class="highlight"><pre><span></span><code>pytest
 </code></pre></div>
 <p>To run tests with coverage:</p>
-<div class="highlight"><pre><span></span><code>pytest<span class="w"> </span>--cov<span class="o">=</span>analyzer<span class="w"> </span>--cov<span class="o">=</span>parsers
+<div class="highlight"><pre><span></span><code>pytest<span class="w"> </span>--cov<span class="o">=</span>parsers
 </code></pre></div>
 <hr />
 <h2 id="code-style">🧼 Code Style<a class="headerlink" href="#code-style" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Follow <strong>PEP8</strong> for formatting</li>
 <li>Use <strong>type hints</strong> wherever possible</li>
-<li>Run <code>black</code> and <code>flake8</code> before submitting</li>
+<li>Run <code>flake8</code> &amp; <code>isort</code> before submitting</li>
 </ul>
-<p>Format your code:</p>
-<div class="highlight"><pre><span></span><code>black<span class="w"> </span>.
-</code></pre></div>
+<p>Format your import:
+<div class="highlight"><pre><span></span><code>isort<span class="w"> </span>
+</code></pre></div></p>
 <p>Check for linting errors:</p>
 <div class="highlight"><pre><span></span><code>flake8
 </code></pre></div>
@@ -877,22 +874,25 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <li>Write tests if applicable</li>
 <li>Run tests and linters</li>
 <li>Commit and push (<code>git commit -m "Add: my new feature"</code>)</li>
-<li>Open a Pull Request against <code>main</code></li>
+<li>Open a Pull Request against <code>master</code></li>
 </ol>
 <hr />
 <h2 id="adding-a-new-language-parser">🔌 Adding a New Language Parser<a class="headerlink" href="#adding-a-new-language-parser" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Create a new file in <code>parsers/</code> (e.g. <code>go_parser.py</code>)</li>
+<li>Create a new file in <code>analyzer/parsers/</code> (e.g. <code>go_parser.py</code>)</li>
 <li>Implement the <code>ParserProtocol</code></li>
-<li>Register it in the CLI (<code>cli/__init__.py</code>)</li>
+<li>Register it in the CLI (<code>parsers/__init__.py</code>)</li>
 <li>Add tests for the parser</li>
 </ol>
 <hr />
 <h2 id="documentation">📚 Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
 <p>Documentation is powered by <strong>MkDocs</strong> and lives in the <code>docs/</code> folder.</p>
 <p>To preview locally:</p>
-<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>serve
+<p><div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>serve
 </code></pre></div>
+Or you can see them via
+<div class="highlight"><pre><span></span><code>https://ahasanular.github.io/code-context-analyzer/
+</code></pre></div></p>
 <hr />
 <h2 id="code-of-conduct">🌍 Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Permanent link">&para;</a></h2>
 <p>Please be respectful and inclusive in all interactions.

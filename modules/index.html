@@ -590,15 +590,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#formatterpy" class="md-nav__link">
-    <span class="md-ellipsis">
-      formatter.py
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#clipboardpy" class="md-nav__link">
     <span class="md-ellipsis">
       clipboard.py
@@ -608,9 +599,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#repository_handlerpy" class="md-nav__link">
+  <a href="#analyzerparsers" class="md-nav__link">
     <span class="md-ellipsis">
-      repository_handler.py
+      analyzer/parsers/
     </span>
   </a>
   
@@ -622,44 +613,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#parsers" class="md-nav__link">
+  <a href="#repo_system" class="md-nav__link">
     <span class="md-ellipsis">
-      📂 parsers/
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📂 parsers/">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basepy" class="md-nav__link">
-    <span class="md-ellipsis">
-      base.py
+      📂 repo_system
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#python_parserpy" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#formatters" class="md-nav__link">
     <span class="md-ellipsis">
-      python_parser.py
+      📂 formatters/
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#js_parserpy" class="md-nav__link">
-    <span class="md-ellipsis">
-      js_parser.py
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -669,21 +636,6 @@
       📂 utils/
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="📂 utils/">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#temp_dirpy" class="md-nav__link">
-    <span class="md-ellipsis">
-      temp_dir.py
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -857,15 +809,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#formatterpy" class="md-nav__link">
-    <span class="md-ellipsis">
-      formatter.py
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#clipboardpy" class="md-nav__link">
     <span class="md-ellipsis">
       clipboard.py
@@ -875,9 +818,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#repository_handlerpy" class="md-nav__link">
+  <a href="#analyzerparsers" class="md-nav__link">
     <span class="md-ellipsis">
-      repository_handler.py
+      analyzer/parsers/
     </span>
   </a>
   
@@ -889,44 +832,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#parsers" class="md-nav__link">
+  <a href="#repo_system" class="md-nav__link">
     <span class="md-ellipsis">
-      📂 parsers/
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📂 parsers/">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basepy" class="md-nav__link">
-    <span class="md-ellipsis">
-      base.py
+      📂 repo_system
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#python_parserpy" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#formatters" class="md-nav__link">
     <span class="md-ellipsis">
-      python_parser.py
+      📂 formatters/
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#js_parserpy" class="md-nav__link">
-    <span class="md-ellipsis">
-      js_parser.py
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -936,21 +855,6 @@
       📂 utils/
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="📂 utils/">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#temp_dirpy" class="md-nav__link">
-    <span class="md-ellipsis">
-      temp_dir.py
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1013,116 +917,48 @@
 <li><strong>Function</strong>: <code>app(argv=None)</code></li>
 <li>Entry point for the CLI interface.</li>
 <li>Parses arguments, initializes analysis, and prints or copies results.</li>
-<li>Uses components from <code>analyzer/</code>, <code>parsers/</code>, and <code>utils/</code>.</li>
+<li>Uses components from <code>analyzer/</code>, <code>parsers/</code></li>
 </ul>
 <hr />
 <h2 id="analyzer">📂 <code>analyzer/</code><a class="headerlink" href="#analyzer" title="Permanent link">&para;</a></h2>
 <h3 id="discoverypy"><code>discovery.py</code><a class="headerlink" href="#discoverypy" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Function</strong>: <code>discover_files(root, languages, max_files, ignore_tests)</code></li>
-<li>Recursively walks a directory.</li>
-<li>Yields file paths and inferred languages based on extension.</li>
-<li>
-<p>Skips hidden directories, <code>__pycache__</code>, and optionally test files.</p>
-</li>
-<li>
-<p><strong>Constant</strong>: <code>EXT_MAP</code></p>
-</li>
-<li>Maps file extensions to language identifiers (e.g., <code>.py</code> → <code>python</code>).</li>
-</ul>
-<hr />
-<h3 id="formatterpy"><code>formatter.py</code><a class="headerlink" href="#formatterpy" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Class</strong>: <code>Formatter</code></li>
-<li>Responsible for formatting the parsed data into a hierarchical summary.</li>
-<li>
-<p>Takes options like <code>depth</code>, <code>method_preview</code>, and truncation settings.</p>
-</li>
-<li>
-<p><strong>Key Methods</strong>:</p>
-</li>
-<li><code>format_project(parsed)</code></li>
-<li><code>_compute_common_root(paths)</code></li>
-<li><code>_build_header(...)</code></li>
+<li>Recursively walks a directory and yields file paths and inferred languages based on extension.</li>
+<li>Skips directories in multiple step - .gitignore respected, then framework specific and lastly optionally test files.</li>
 </ul>
 <hr />
 <h3 id="clipboardpy"><code>clipboard.py</code><a class="headerlink" href="#clipboardpy" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Function</strong>: <code>copy_to_clipboard(text)</code></li>
 <li>Uses <code>pyperclip</code> to copy output text to the system clipboard.</li>
 <li>Returns <code>True</code> on success, <code>False</code> on failure.</li>
 </ul>
 <hr />
-<h3 id="repository_handlerpy"><code>repository_handler.py</code><a class="headerlink" href="#repository_handlerpy" title="Permanent link">&para;</a></h3>
+<h3 id="analyzerparsers"><code>analyzer/parsers/</code><a class="headerlink" href="#analyzerparsers" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Class</strong>: <code>RepositoryHandler</code></li>
-<li>Handles resolving a source location (local or GitHub).</li>
-<li>
-<p>Supports:</p>
-<ul>
-<li>Cloning GitHub repos into temp directories</li>
-<li>Copying local folders</li>
-<li>Selecting a branch</li>
-</ul>
-</li>
-<li>
-<p><strong>Key Methods</strong>:</p>
-</li>
-<li><code>resolve_source(source, branch)</code></li>
-<li><code>_clone_repo_to_temp(...)</code></li>
+<li>Responsible for parsing many kind of files found from the discovery.</li>
+<li>Have multiple parsers included - <code>PythonParser</code> <code>JsParser</code>.</li>
 </ul>
 <hr />
-<h2 id="parsers">📂 <code>parsers/</code><a class="headerlink" href="#parsers" title="Permanent link">&para;</a></h2>
-<h3 id="basepy"><code>base.py</code><a class="headerlink" href="#basepy" title="Permanent link">&para;</a></h3>
+<h2 id="repo_system">📂 <code>repo_system</code><a class="headerlink" href="#repo_system" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Class</strong>: <code>ParserProtocol</code> (Python Protocol)</li>
-<li>Defines the interface for all language parsers.</li>
-<li>Required method: <code>parse_file(self, path)</code></li>
+<li>Handler for GitHub repository</li>
+<li>works with context manager session to automatically remove the repo after analysis.</li>
 </ul>
 <hr />
-<h3 id="python_parserpy"><code>python_parser.py</code><a class="headerlink" href="#python_parserpy" title="Permanent link">&para;</a></h3>
+<h2 id="formatters">📂 <code>formatters/</code><a class="headerlink" href="#formatters" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Class</strong>: <code>PythonParser</code></li>
-<li>Parses Python files using the <code>ast</code> module.</li>
-<li>
-<p>Extracts classes, function signatures, and constants.</p>
-</li>
-<li>
-<p><strong>Key Methods</strong>:</p>
-</li>
-<li><code>parse_file(path)</code></li>
-<li><code>_sig_from_function(node)</code></li>
-</ul>
-<hr />
-<h3 id="js_parserpy"><code>js_parser.py</code><a class="headerlink" href="#js_parserpy" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Class</strong>: <code>JSParser</code></li>
-<li>Parses JavaScript source files using regular expressions.</li>
-<li>
-<p>Detects:</p>
-<ul>
-<li>Class definitions</li>
-<li>Function declarations</li>
-<li>Exported functions</li>
-</ul>
-</li>
-<li>
-<p><strong>Constants</strong>:</p>
-</li>
-<li><code>RE_CLASS</code>, <code>RE_FN</code>, <code>RE_EXPORT_FN</code></li>
+<li>Responsible for formatting the parsed data into a hierarchical summary.</li>
+<li>Have multiple formatters included - <code>default</code> <code>html</code>, <code>json</code>, <code>yaml</code>.</li>
 </ul>
 <hr />
 <h2 id="utils">📂 <code>utils/</code><a class="headerlink" href="#utils" title="Permanent link">&para;</a></h2>
-<h3 id="temp_dirpy"><code>temp_dir.py</code><a class="headerlink" href="#temp_dirpy" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Function</strong>: <code>temp_directory(suffix, prefix, dir, auto_cleanup)</code></li>
-<li>Context manager for creating and managing temporary directories.</li>
-<li>Automatically removes directory after use if <code>auto_cleanup=True</code>.</li>
+<li>Have temp directory manager</li>
+<li>and dto converter for report formatting</li>
 </ul>
 <hr />
 <h2 id="tests-and-teststest_parsers">📂 <code>tests/</code> and <code>tests/test_parsers/</code><a class="headerlink" href="#tests-and-teststest_parsers" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Currently includes <code>__init__.py</code> placeholders.</li>
 <li>Use <code>pytest</code> to test:</li>
 <li>File discovery logic</li>
 <li>Parser outputs</li>
@@ -1148,16 +984,16 @@
 <td>File collection</td>
 </tr>
 <tr>
-<td><code>formatter.py</code></td>
-<td>Summary formatting</td>
-</tr>
-<tr>
 <td><code>clipboard.py</code></td>
 <td>Clipboard copy utility</td>
 </tr>
 <tr>
-<td><code>repository_handler.py</code></td>
+<td><code>repo_system</code></td>
 <td>GitHub/local repo resolution</td>
+</tr>
+<tr>
+<td><code>formatters</code></td>
+<td>Summary formatting</td>
 </tr>
 <tr>
 <td><code>python_parser.py</code>, <code>js_parser.py</code></td>
