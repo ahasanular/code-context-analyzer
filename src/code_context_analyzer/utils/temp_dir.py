@@ -1,8 +1,8 @@
+import os
 import shutil
+import stat
 import tempfile
 from contextlib import contextmanager
-import os
-import stat
 
 
 def handle_remove_readonly(func, path, exc_info):

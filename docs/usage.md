@@ -15,13 +15,13 @@ cca <source> [options]
 Analyze a local directory:
 
 ```bash
-cca ./my_project --lang python --depth 2
+cca ./my_project
 ```
 
 Analyze a GitHub repository:
 
 ```bash
-cca https://github.com/pallets/flask --lang python
+cca https://github.com/pallets/flask
 ```
 
 ---
@@ -52,9 +52,8 @@ Currently supported languages:
 
 ## 🧪 Tips
 
-- Use `--depth 1` to see a flat summary
-- Combine `--ignore-tests` and `--max-files` for faster scans
-- Use `--copy` to paste summaries into docs or PRs
+- Combine `--ignore-tests true` and `--ignore <some, files, to, ignore>` customize the ignoring.
+- Use `--no-coopy` to not automatically copy the response from analyzer
 
 ---
 

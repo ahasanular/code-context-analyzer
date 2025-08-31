@@ -28,20 +28,39 @@ CLI Output (terminal or clipboard)
 
 ```plaintext
 code_context_analyzer/
-├── cli/
-│   └── __init__.py        # CLI logic, defines `app()`
-├── main.py                # Optional entry point script
+├── /
+│   ├── main.py
+│   └── __init__.py
 ├── analyzer/
-│   ├── discovery.py       # File discovery logic
-│   ├── formatter.py       # Formats parsed output
-│   ├── repository_handler.py # Handles GitHub/local resolution
-│   ├── clipboard.py       # Cross-platform clipboard copying
-├── parsers/
-│   ├── base.py            # ParserProtocol definition
-│   ├── python_parser.py   # Python code parser using `ast`
-│   ├── js_parser.py       # JavaScript parser using regex
-├── utils/
-│   └── temp_dir.py        # Temp directory context manager
+│   ├── clipboard.py
+│   ├── discovery.py
+│   └── __init__.py
+├── analyzer\parsers/
+│   ├── base.py
+│   ├── js_parser.py
+│   ├── python_parser.py
+│   └── __init__.py
+├── cli/
+│   └── __init__.py
+├── dto/
+│   ├── models.py
+│   └── __init__.py
+├── formatters/
+│   ├── base.py
+│   ├── default.py
+│   ├── factory.py
+│   ├── html_formatter.py
+│   ├── json_formatter.py
+│   ├── yaml_formatter.py
+│   └── __init__.py
+├── repo_system/
+│   ├── handler.py
+│   ├── session.py
+│   └── __init__.py
+└── utils/
+    ├── dto_converter.py
+    ├── temp_dir.py
+    └── __init__.py
 ```
 
 ---
@@ -53,7 +72,7 @@ code_context_analyzer/
    The user runs:
 
    ```bash
-   cca <source> --lang python --depth 2
+   cca <source> --ignore <some, ingore, patterns>
    ```
 
 2. **RepositoryHandler resolves the source**
@@ -61,7 +80,7 @@ code_context_analyzer/
    - If local path: it validates the directory
    - If GitHub URL: it clones the repo to a temp dir
 
-3. **`discover_files()` walks the directory**
+3. **walks through the directory**
 
    - Yields paths and their inferred language
    - Filters based on extension, test files, max files
@@ -74,11 +93,11 @@ code_context_analyzer/
 5. **Formatter builds structured output**
 
    - Outputs hierarchy based on folder/module structure
-   - Optional truncation or flattening via `depth`
+   - Optional truncation
 
 6. **Output sent to terminal or clipboard**
 
-   - If `--copy` is passed, summary is copied using `pyperclip`
+   - If `--no-clipboard` is passed, summary is copied automatically
 
 ---
 
@@ -88,14 +107,14 @@ To add support for a new language:
 
 1. Create a new parser in `parsers/` (e.g. `go_parser.py`)
 2. Implement the `ParserProtocol`
-3. Register the parser in the CLI entrypoint
+3. Register the parser in registry
 
 Example:
 
 ```python
 from .go_parser import GoParser
 
-PARSERS = {
+registry = {
     "python": PythonParser(),
     "js": JSParser(),
     "go": GoParser(),  # new

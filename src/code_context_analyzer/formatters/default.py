@@ -4,8 +4,7 @@ needs to check and refactored to get desired output
 """
 
 import os
-from collections import defaultdict
-from typing import List, Dict, Any, Optional
+from typing import Any, Dict, List, Optional
 
 
 class LegacyCodeFormatter:
@@ -60,8 +59,8 @@ class LegacyCodeFormatter:
 
         # Apply truncation if needed
         if self.truncate_total and len(full_report) > self.truncate_total:
-            full_report = full_report[
-                              :self.truncate_total] + "\n\n... (truncated due to length)"
+            full_report = (full_report[:self.truncate_total]
+                           + "\n\n... (truncated due to length)")
 
         return full_report
 

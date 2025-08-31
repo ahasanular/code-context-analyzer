@@ -1,11 +1,11 @@
 """Top-level orchestration."""
-from .discovery import discover_files
+from code_context_analyzer.formatters.default import LegacyCodeFormatter
+from code_context_analyzer.formatters.factory import FormatterFactory
 # from .formatter import Formatter
 from code_context_analyzer.utils.dto_converter import create_analysis_result
-from code_context_analyzer.formatters.factory import FormatterFactory
-from code_context_analyzer.formatters.default import LegacyCodeFormatter
-from .parsers import registry
 
+from .discovery import create_file_discoverer
+from .parsers import registry
 
 
 class Analyzer:
@@ -19,27 +19,32 @@ class Analyzer:
     def __init__(
         self,
         path,
-        languages,
-        max_files:int = 1000,
-        depth:int = 3,
-        ignore_tests:bool = True,
+        max_files: int,
+        # depth:int = 3,
+        ignore_tests: bool = True,
+            ignore=None,
     ):
+        if ignore is None:
+            ignore = []
         self.path = path
-        self.languages = languages
         self.max_files = max_files
-        self.depth = depth
+        # self.depth = depth
         self.ignore_tests = ignore_tests
+        self.ignore = ignore
 
     def run_analysis(self):
-        files = discover_files(
-            self.path,
-            self.languages,
-            self.max_files,
-            self.ignore_tests
+
+        discoverer = create_file_discoverer(
+            max_files=self.max_files,
+            # depth=self.depth,
+            ignore_tests=self.ignore_tests,
+            ignore_patterns=self.ignore,
         )
+        files = discoverer.discover_files(self.path)
 
         parsed = []
         for fpath, lang in files:
+            # lang = fpath.split(".")[-1]
             parser = registry.get(lang)
             if not parser:
                 continue

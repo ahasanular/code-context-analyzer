@@ -16,12 +16,12 @@ pip install code-context-analyzer
 
 ## 📁 Analyze a local project
 ```bash
-cca ./my_project --lang python --depth 2
+cca /path/to/project
 ```
 
 ## 🌐 Analyze a GitHub repository
 ```bash
-cca https://github.com/pallets/flask --lang python --depth 2
+cca https://github.com/pallets/flask --ignore/alembic/
 ```
 
 ## ⚙️ Features
@@ -36,20 +36,42 @@ cca https://github.com/pallets/flask --lang python --depth 2
 - 🔌 Modular architecture for future language extensions
 - 🌐 Supports both local paths and GitHub URLs
 
-## 📁 Project Structure
-```bash
+## 🧩 Architecture Overview
+```plaintext
 code_context_analyzer/
-├── cli/
-│   ├── __init__.py            # CLI app codes
+├── /
+│   ├── main.py
+│   └── __init__.py
 ├── analyzer/
-│   ├── discovery.py          # File discovery logic
-│   ├── formatter.py          # Output formatter
-│   ├── repository_handler.py # GitHub/local repo handling
-│   ├── clipboard.py          # Clipboard support
-│   ├── parsers/              # Code parsers (Python, JS)
-│   └── utils/                # Temporary directory helpers
-└── tests/                    # Test suite
-└── main.py                   # Entrypoint
+│   ├── clipboard.py
+│   ├── discovery.py
+│   └── __init__.py
+├── analyzer\parsers/
+│   ├── base.py
+│   ├── js_parser.py
+│   ├── python_parser.py
+│   └── __init__.py
+├── cli/
+│   └── __init__.py
+├── dto/
+│   ├── models.py
+│   └── __init__.py
+├── formatters/
+│   ├── base.py
+│   ├── default.py
+│   ├── factory.py
+│   ├── html_formatter.py
+│   ├── json_formatter.py
+│   ├── yaml_formatter.py
+│   └── __init__.py
+├── repo_system/
+│   ├── handler.py
+│   ├── session.py
+│   └── __init__.py
+└── utils/
+    ├── dto_converter.py
+    ├── temp_dir.py
+    └── __init__.py
 ```
 
 ## 📚 Documentation Sections

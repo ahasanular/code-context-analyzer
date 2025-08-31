@@ -1,9 +1,9 @@
 from .base import BaseFormatter
-from .json_formatter import JSONFormatter
+from .default import LegacyCodeFormatter
 from .html_formatter import HTMLFormatter
+from .json_formatter import JSONFormatter
 # from .text_formatter import TextFormatter
 from .yaml_formatter import YAMLFormatter
-from .default import LegacyCodeFormatter
 
 
 class FormatterFactory:

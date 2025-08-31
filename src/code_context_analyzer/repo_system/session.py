@@ -1,6 +1,9 @@
-from code_context_analyzer.utils.temp_dir import temp_directory
-from .handler import RepositoryHandler
 import os
+
+from code_context_analyzer.utils.temp_dir import temp_directory
+
+from .handler import RepositoryHandler
+
 
 class RepositorySession:
     def __init__(self, repo_url: str, default_branch: str = "main"):

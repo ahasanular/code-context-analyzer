@@ -72,8 +72,7 @@ plugins:
 
 # Watch for changes in source code to enable live-reloading
 watch:
-  - analyzer
-  - main.py
+  - src/code_context_analyzer
 
 # Extra CSS/JS (optional customization)
 # extra_css:

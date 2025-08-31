@@ -14,14 +14,25 @@ This project follows [Semantic Versioning](https://semver.org/).
 - Support for analyzing:
   - Local directories
   - Remote GitHub repositories
-- File discovery module with `.gitignore` and test skipping
+- File discovery module with optional test skipping
 - Parsers for:
   - Python (via `ast`)
   - JavaScript (via regex)
 - Modular `Formatter` class to generate text summaries
-- Clipboard copy support (`--copy`)
+- Clipboard copy support (`--no-copy`)
 - CLI flags for `--depth`, `--lang`, `--max-files`, `--ignore-tests`
 - Temporary directory context manager for safe GitHub repo cloning
+
+---
+
+## [0.2.2] - 2025-08-28
+
+### Added
+- File discovery module with ignore files from `.gitignore`, `custom_patterns` and `framework-specific`
+- Modular `formatters/` full module with multiple formatter added.
+- CLI flags removed `--depth`, `--lang`.
+- CLI flags added `--ignore`.
+- And some architectural change in codebase.
 
 ---
 

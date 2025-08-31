@@ -1,12 +1,9 @@
-from code_context_analyzer.dto.models import (
-    AnalysisResult,
-    PackageInfo,
-    ModuleInfo,
-    ClassInfo,
-    MethodInfo
-)
-from typing import  List, Dict, Any
 import os
+from typing import Any, Dict, List
+
+from code_context_analyzer.dto.models import (AnalysisResult, ClassInfo,
+                                              MethodInfo, ModuleInfo,
+                                              PackageInfo)
 
 
 def create_analysis_result(parsed_data: List[Dict[str, Any]],

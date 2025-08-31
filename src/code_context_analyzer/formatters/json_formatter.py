@@ -1,7 +1,9 @@
 import json
-from typing import Dict, Any
-from .base import BaseFormatter
+from typing import Any, Dict
+
 from code_context_analyzer.dto.models import AnalysisResult
+
+from .base import BaseFormatter
 
 
 class JSONFormatter(BaseFormatter):

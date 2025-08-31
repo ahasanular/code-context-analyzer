@@ -1,11 +1,13 @@
 from dataclasses import dataclass, field
-from typing import List, Dict, Any, Optional
+from typing import List, Optional
+
 
 @dataclass
 class MethodInfo:
     name: str
     signature: str
     docstring: Optional[str] = None
+
 
 @dataclass
 class ClassInfo:
@@ -14,12 +16,14 @@ class ClassInfo:
     methods: List[MethodInfo]
     docstring: Optional[str] = None
 
+
 @dataclass
 class ModuleInfo:
     path: str
     classes: List[ClassInfo] = field(default_factory=list)
     functions: List[MethodInfo] = field(default_factory=list)
     constants: List[str] = field(default_factory=list)
+
 
 @dataclass
 class PackageInfo:
@@ -28,6 +32,7 @@ class PackageInfo:
     class_count: int = 0
     function_count: int = 0
     constant_count: int = 0
+
 
 @dataclass
 class AnalysisResult:

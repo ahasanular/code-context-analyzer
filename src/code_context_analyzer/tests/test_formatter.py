@@ -1,14 +1,14 @@
-from code_context_analyzer.analyzer.formatter import Formatter
+from code_context_analyzer.formatters.default import LegacyCodeFormatter
 
 
 def test_formatter_basic():
     parsed_data = [
-        {"path": "file1.py", "functions": ["foo", "bar"], "classes": ["A"]},
-        {"path": "file2.py", "functions": ["baz"], "classes": []}
+        {"path": "file1.py", "functions": [{"name": "foo", "sig":None}], "classes": [{'bases': [], 'doc': None, 'methods': [{'doc': None, 'name': '__post_init__', 'sig': '(self)'}], 'name': 'DiscovererConfig'}]},
+        {"path": "file2.py", "functions": [{"name": "baz", "sig":None}], "classes": []}
     ]
-    formatter = Formatter(depth=2, method_preview=10, doc_chars=220)
-    result = formatter.format_project(parsed_data)
-    assert "2 file(s)" in result
-    assert "1 class(es)" in result
-    assert "3 function(s)" in result
+    formatter = LegacyCodeFormatter(depth=2, method_preview=10, doc_chars=220)
+    result = formatter.format(parsed_data)
+    assert "**2** file(s)" in result
+    assert "**1** class(es)" in result
+    assert "**2** function(s)" in result
     assert "foo" in result

@@ -7,7 +7,7 @@ def test_discover_files(tmp_path):
     (tmp_path / "script.js").write_text("console.log('hi');")
 
     # Pass string path, not Path object
-    found = list(discover_files(str(tmp_path), languages=["py", "js"], max_files=10))
+    found = list(discover_files(str(tmp_path), max_files=1000, depth=3, ignore_tests=True, ignore_patterns=['build/, *migrations/']))
     paths = [str(p[0]) for p in found]
 
     assert any("main.py" in p for p in paths), "main.py not found"

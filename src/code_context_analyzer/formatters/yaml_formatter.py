@@ -1,7 +1,10 @@
+from typing import Any, Dict
+
 import yaml
-from typing import Dict, Any
-from .base import BaseFormatter
+
 from code_context_analyzer.dto.models import AnalysisResult
+
+from .base import BaseFormatter
 
 
 class YAMLFormatter(BaseFormatter):
