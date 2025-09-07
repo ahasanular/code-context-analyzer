@@ -32,7 +32,9 @@ class Analyzer:
         self.ignore_tests = ignore_tests
         self.ignore = ignore
 
-    def run_analysis(self):
+    def run_analysis(self, path: str = None):
+        if path is None:
+            path = self.path
 
         discoverer = create_file_discoverer(
             max_files=self.max_files,
@@ -40,7 +42,7 @@ class Analyzer:
             ignore_tests=self.ignore_tests,
             ignore_patterns=self.ignore,
         )
-        files = discoverer.discover_files(self.path)
+        files = discoverer.discover_files(path)
 
         parsed = []
         for fpath, lang in files:
