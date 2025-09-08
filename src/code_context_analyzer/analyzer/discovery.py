@@ -261,34 +261,27 @@ class IgnorePatternHandler:
             self.patterns.extend(framework_patterns)
 
     def _load_gitignore_patterns(self) -> List[str]:
-        """Load patterns from .gitignore files"""
+        """Load patterns from .gitignore files within the repository."""
         patterns = []
 
-        # Look for .gitignore in the root directory and parent directories
-        current_dir = self.root_dir
-        while current_dir.exists():
-            gitignore_path = current_dir / '.gitignore'
-
-            if gitignore_path.exists():
-                try:
-                    with open(gitignore_path, 'r', encoding='utf-8') as f:
-                        for line in f:
-                            line = line.strip()
-                            # Skip empty lines and comments
-                            if line and not line.startswith('#'):
-                                # Convert pattern to be relative to root
-                                if current_dir != self.root_dir:
-                                    rel_path = current_dir.relative_to(
-                                        self.root_dir)
-                                    line = str(rel_path / line)
-                                patterns.append(line)
-                except (IOError, UnicodeDecodeError):
-                    pass
-
-            # Stop at filesystem root
-            if current_dir.parent == current_dir:
-                break
-            current_dir = current_dir.parent
+        # Process .gitignore files recursively within the repository
+        for gitignore_path in self.root_dir.rglob('.gitignore'):
+            try:
+                with open(gitignore_path, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        line = line.strip()
+                        if not line or line.startswith('#'):
+                            continue
+                        # Make pattern relative to repository root
+                        rel_dir = gitignore_path.parent.relative_to(
+                            self.root_dir)
+                        if rel_dir != Path('.'):
+                            pattern = str(rel_dir / line)
+                        else:
+                            pattern = line
+                        patterns.append(pattern)
+            except (IOError, UnicodeDecodeError):
+                continue  # Skip unreadable files
 
         return patterns
 
